@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shanecore_systems^TM | Technical Engineering Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://assets.onecompiler.app/43af7ep2e/43dtyadhc/IMG-20250305-WA0031.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Logo */
+        header {
+            padding: 15px 0 10px;
+            background: rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            height: 50px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            color: white;
+        }
+
+        .logo-text sup {
+            font-size: 0.8rem;
+            vertical-align: super;
+            margin-left: 2px;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .login-btn {
+            background: rgba(76, 175, 80, 0.3);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s;
+            border: 1px solid #4CAF50;
+            margin-bottom: 5px;
+        }
+
+        .login-btn:hover {
+            background: #4CAF50;
+        }
+
+        .weather-info {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .weather-icon {
+            margin-right: 5px;
+            font-size: 1.2rem;
+        }
+
+        .datetime {
+            font-size: 0.9rem;
+            color: #ccc;
+            text-align: right;
+        }
+
+        /* Technical Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+            position: relative;
+        }
+
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            padding: 10px 0;
+            display: block;
+        }
+
+        nav ul li a:hover {
+            color: #4CAF50;
+        }
+
+        /* Engineering Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.9);
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            padding: 10px 0;
+            border: 1px solid #333;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(76, 175, 80, 0.1);
+            border-left: 3px solid #4CAF50;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-icon {
+            margin-left: 5px;
+            font-size: 0.8rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-left: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+        }
+
+        .hero h1 sup {
+            font-size: 1.5rem;
+            vertical-align: super;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #45a049;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 1px solid #333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            nav ul li {
+                margin-right: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .header-right {
+                align-items: flex-start;
+                margin-top: 15px;
+                width: 100%;
+            }
+            
+            .login-btn {
+                align-self: flex-end;
+            }
+            
+            .datetime, .weather-info {
+                text-align: left;
+            }
+            
+            .logo {
+                flex-direction: row;
+                gap: 10px;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin-right: 0;
+                margin-bottom: 5px;
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+                width: 100%;
+                box-shadow: none;
+                border: none;
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <a href="#" class="logo">
+                    <img src="https://assets.onecompiler.app/43af7ep2e/43dtyadhc/IMG-20250305-WA0031.jpg" alt="shanecore_systems^TM Logo" class="logo-image">
+                    <div class="logo-text">shanecore_systems<sup>TM</sup></div>
+                </a>
+                <div class="header-right">
+                    <a href="#login" class="login-btn">Client Login</a>
+                    <div class="datetime" id="datetime"></div>
+                    <div class="weather-info">
+                        <i class="fas fa-sun weather-icon"></i>
+                        <span id="weather">Sunny, 24°C</span>
+                    </div>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#services">Engineering Services <i class="fas fa-caret-down dropdown-icon"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#electrical-engineering"><i class="fas fa-cogs"></i> Electrical Systems</a>
+                            <a href="#embedded-systems"><i class="fas fa-microchip"></i> Embedded Engineering</a>
+                            <a href="#industrial-automation"><i class="fas fa-robot"></i> Industrial Automation</a>
+                            <a href="#technical-consulting"><i class="fas fa-chart-line"></i> Technical Consulting</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#training">Technical Training <i class="fas fa-caret-down dropdown-icon"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#certification-courses"><i class="fas fa-certificate"></i> Certification Courses</a>
+                            <a href="#workshops"><i class="fas fa-laptop-code"></i> Hands-on Workshops</a>
+                            <a href="#webinars"><i class="fas fa-video"></i> Technical Webinars</a>
+                        </div>
+                    </li>
+                    <li><a href="#projects">Engineering Projects</a></li>
+                    <li class="dropdown">
+                        <a href="#resources">Technical Resources <i class="fas fa-caret-down dropdown-icon"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#white-papers"><i class="fas fa-file-alt"></i> Technical White Papers</a>
+                            <a href="#case-studies"><i class="fas fa-project-diagram"></i> Engineering Case Studies</a>
+                            <a href="#tools"><i class="fas fa-tools"></i> Engineering Tools</a>
+                        </div>
+                    </li>
+                    <li><a href="#contact">Contact Engineering</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero" id="home">
+            <h1>shanecore_systems<sup>TM</sup></h1>
+            <p>Advanced technical engineering services for industrial, mechanical, and embedded systems. Precision solutions for complex engineering challenges.</p>
+            <a href="#contact" class="btn">Request Engineering Consultation</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 shanecore_systems<sup>TM</sup>. All Rights Reserved.<br>ISO 9001:2025 Certified | IEEE Standards Compliant</p>
+    </footer>
+
+    <script>
+        // Update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            document.getElementById('datetime').textContent = now.toLocaleDateString('en-US', options);
+        }
+
+        // Fictional weather patterns
+        const weatherConditions = [
+            { icon: 'fa-sun', text: 'Sunny, 24°C' },
+            { icon: 'fa-cloud-sun', text: 'Partly Cloudy, 21°C' },
+            { icon: 'fa-cloud', text: 'Cloudy, 19°C' },
+            { icon: 'fa-cloud-rain', text: 'Rainy, 16°C' },
+            { icon: 'fa-bolt', text: 'Stormy, 21°C' },
+            { icon: 'fa-smog', text: 'Foggy, 18°C' },
+            { icon: 'fa-wind', text: 'Windy, 20°C' }
+        ];
+
+        // Update weather display
+        function updateWeather() {
+            const randomWeather = weatherConditions[Math.floor(Math.random() * weatherConditions.length)];
+            const weatherIcon = document.querySelector('.weather-icon');
+            weatherIcon.className = `fas ${randomWeather.icon} weather-icon`;
+            document.getElementById('weather').textContent = randomWeather.text;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateDateTime();
+            updateWeather();
+            setInterval(updateDateTime, 1000);
+            
+            // Change weather every 30 minutes for variety
+            setInterval(updateWeather, 1800000);
+        });
+    </script>
+</body>
+</html>
